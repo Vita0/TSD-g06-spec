@@ -1,0 +1,44 @@
+/*
+@author Masha
+@date Tue Nov 15 23:46:07 MSK 2016
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis.AdtCrisisID
+"the identification information used to determine the crisis to add family numbers on"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis.AdtFamilyPhoneNumbers
+"the container stores family phone numbers"
+@endParameters
+
+@description
+"sent to update the family phone numbers available for a specific handled crisis."
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+//preFunctional descriptions
+@preF
+"it is supposed that there exist one crisis in the pre state having the given id."
+@endPreF
+//postFunctional descriptions
+@postF 
+"the family phone numbers of the crisis instance having the given id is replaced by the given one and the requesting actor is notified of this update."
+@postF 
+"For each phone number from AdtFamilyPhoneNumbers:
+if there is no ctHuman instance having same phone number and familyMember kind in the pre-state 
+then a new one is added in the post-state with given phone number and familyMember kind and is associated to the communication company which can be determined in container AdtFamilyPhoneNumbers (if it is not determined then association to current communication company).
+"
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

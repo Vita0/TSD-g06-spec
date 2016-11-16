@@ -12,6 +12,7 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 	\addrowheading{Parameters}
 	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis to report on} 
 	\addnumbereddoublerow{}{AdtComment: dtComment}{the textual information commenting the crisis} 
+	\addnumbereddoublerow{}{AdtCrisisSendSmsFamily: ptBoolean}{the boolean value which determines whether system need to send sms messages to family members} 
 
 	\addrowheading{Return type}
 	\addsinglerow{ptBoolean}
@@ -24,7 +25,16 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 	\addnumberedsinglerow{PreF}{it is supposed that there exist one crisis in the pre state having the given id.}
 
 	\addrowheading{Post-Condition (functional)}
-	\addnumberedsinglerow{PostF}{the comment attribute of the crisis instance having the given id is replaced by the given one and the requesting actor is notified of this update.}
+	\addnumberedsinglerow{PostF}{the comment attribute of the crisis instance having the given id is replaced by the given one.
+	If AdtCrisisSendSmsFamily value equals true then the requesting actor is notified of this update and sending messages to family members.
+	Else the requesting actor is just notified of this update. }
+	\addnumberedsinglerow{PostF}{if AdtCrisisSendSmsFamily value equals true for each family phone number:
+	if there is no ctHuman instance having same phone number and familyMember kind in the pre-state 
+	then a new one is added in the post-state with given phone number and familyMember kind and is associated to the current communication company.
+	else the pre-state one is chosen
+	}
+	\addnumberedsinglerow{PostF}{if AdtCrisisSendSmsFamily value equals true:
+	a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family phone number, one acknowledgement).}
 
 	\addrowheading{Post-Condition (protocol)}
 	\addnumberedsinglerow{PostP}{ none}
@@ -36,18 +46,6 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 	
 	
 	
-	% ------------------------------------------
-	% PROLOG Listing
-	% ------------------------------------------
-	
-	\vspace{1cm}
-	The listing~\ref{OM-actCoordinator-oeReportOnCrisis-PROLOG-LST} provides the \msrmessir (Prolog-oriented) implementation of the operation.
-	
-	\scriptsize
-	\vspace{0.5cm}
-	
-	\lstinputlisting[style=MessirPrologStyle,firstnumber=auto,captionpos=b,caption={\msrmessir (Prolog-oriented) implementation of the operation \emph{oeReportOnCrisis}.},label=OM-actCoordinator-oeReportOnCrisis-PROLOG-LST]{../lu.uni.lassy.excalibur.examples.icrash.simulation/src/Operations/Environment/OUT/outactCoordinator-oeReportOnCrisis.pl}
-	\normalsize
 
 
 

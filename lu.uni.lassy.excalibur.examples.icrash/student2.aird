@@ -459,6 +459,15 @@
   <semanticResources>platform:/resource/lu.uni.lassy.excalibur.standard.specification.libraries/library/documentation/PrimaryType-Primitive-ptReal.msrd</semanticResources>
   <semanticResources>platform:/resource/lu.uni.lassy.excalibur.standard.specification.libraries/library/documentation/PrimaryType-Primitive-ptString.msrd</semanticResources>
   <semanticResources>documentation/View-em-gv-02.msrd</semanticResources>
+  <semanticResources>concepts/documentation/Operation-dtFamilyPhoneNumbers-is.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Datatype-dtFamilyPhoneNumbers.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
+  <semanticResources>operations/primarytypes-datatypes-dtFamilyPhoneNumbers.msr</semanticResources>
+  <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtFamilyPhoneNumbers-is.msr</semanticResources>
+  <semanticResources>operations/environment/environment-actCoordinator-oeAddFamilyNumbersOnCrisis.msr</semanticResources>
+  <semanticResources>documentation/View-operation-scope-dtFamilyPhoneNumbers-is.msrd</semanticResources>
+  <semanticResources>documentation/View-uc-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_VxVZ4PWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

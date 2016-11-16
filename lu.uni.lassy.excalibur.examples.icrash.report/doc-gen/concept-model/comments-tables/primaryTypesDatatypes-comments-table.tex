@@ -22,6 +22,8 @@ The table below is providing comments on the graphical views given for the datat
 \adddoublerow{dtCrisisID}{ A string used to identify crisis.}
 \addsingletwocolumnrow{extends}{dtString}
 \adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which strings are considered as valid crisis identifiers.}
+\adddoublerow{dtFamilyPhoneNumbers}{a container used to store the family phone numbers associated with the crisis.}
+\adddoubletwocolumnrow{operation}{\msrcode{is():ptBoolean}}{used to determine which list with family phone numbers are considered as valid. Container dtFamilyPhoneNumbers is valid if length of list with family phone numbers more than 0.}
 \adddoublerow{dtGPSLocation}{used to define coordinates of geograpical positions on earth. It is defined a couple made of a latitude and a longitude.}
 \adddoubletwocolumnrow{attribute}{\msrcode{latitude: dtLatitude}}{for the latitude part of the coordinate.}
 \adddoubletwocolumnrow{attribute}{\msrcode{longitude: dtLongitude}}{for the longitude part of the coordinate.}

@@ -11,6 +11,7 @@ Operation Model {
           ( self = witness
             or self = victim
             or self = anonymous
+            or self = familyMember
           )
           then (TheResult = true)
           else (TheResult = false)

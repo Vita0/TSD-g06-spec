@@ -60,7 +60,12 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeSetCrisisHandler(AdtCrisisID:dtCrisisID ):ptBoolean
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
-											AdtComment:dtComment 
+											AdtComment:dtComment,
+											AdtCrisisSendSmsFamily:ptBoolean 
+											):ptBoolean
+				operation oeAddFamilyNumbersOnCrisis(
+											AdtCrisisID:dtCrisisID,
+											AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers
 											):ptBoolean
 				operation oeSetCrisisStatus(
 											AdtCrisisID:dtCrisisID ,
@@ -70,7 +75,7 @@ import lu.uni.lassy.messir.libraries.calendar
                                           AdtCrisisID:dtCrisisID ,
                                           AetCrisisType:etCrisisType
                                           ):ptBoolean
-				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean
+				operation oeValidateAlert(AdtAlertID:dtAlertID ):ptBoolean	
 			}
 			
 			input interface inactCoordinator{

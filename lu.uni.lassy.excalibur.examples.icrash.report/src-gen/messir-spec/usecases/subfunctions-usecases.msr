@@ -101,8 +101,17 @@ import icrash.environment
     }
   }
 //----------------------------------------------------
-  use case system subfunction oeReportOnCrisis(AdtCrisisID:dtCrisisID,AdtComment:dtComment) {
+  use case system subfunction oeReportOnCrisis(AdtCrisisID:dtCrisisID,AdtComment:dtComment,AdtCrisisSendSmsFamily:ptBoolean) {
     actor actCoordinator[primary,active]
+    actor actComCompany[secondary,passive,multiple]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+      ieSmsSend(AdtPhoneNumber,AdtSMS) returned to actComCompany
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeAddFamilyNumbersOnCrisis(AdtCrisisID:dtCrisisID,AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers) {
+  	actor actCoordinator[primary,active]
     returned messages {
       ieMessage(AMessage) returned to actCoordinator
     }

@@ -27,6 +27,9 @@ import lu.uni.lassy.messir.libraries.calendar
 			datatype dtPhoneNumber extends dtString {
 				operation is():ptBoolean
 			}
+			datatype dtFamilyPhoneNumbers {
+				operation is():ptBoolean
+			}
 			datatype dtComment extends dtString {
 				operation is():ptBoolean			
 			}
@@ -56,7 +59,7 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation is():ptBoolean
 			}
 			enum etHumanKind {
-				constants["witness", "victim", "anonymous"]
+				constants["witness", "victim", "anonymous", "familyMember"]
 				operation is():ptBoolean
 			}
 		}

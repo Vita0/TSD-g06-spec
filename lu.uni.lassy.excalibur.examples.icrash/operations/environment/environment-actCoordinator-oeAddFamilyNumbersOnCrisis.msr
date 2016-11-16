@@ -1,0 +1,21 @@
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.environment
+
+	Operation Model {
+
+operation: actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis(
+	AdtCrisisID:dtCrisisID,
+	AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers
+):ptBoolean{
+		// include below the specification information (pre,post or ocl or prolog)
+
+		}
+	}
+}

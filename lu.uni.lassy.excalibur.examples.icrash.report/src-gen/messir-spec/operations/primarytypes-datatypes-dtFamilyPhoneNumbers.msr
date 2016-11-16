@@ -1,0 +1,16 @@
+/*
+* @author Masha
+* @date Wed Nov 16 02:44:36 MSK 2016
+*/
+
+package lu.uni.lassy.excalibur.examples.icrash.operations.messir.msr {
+
+import lu.uni.lassy.messir.libraries.primitives
+
+
+	Operation Model {
+
+	}
+
+
+}

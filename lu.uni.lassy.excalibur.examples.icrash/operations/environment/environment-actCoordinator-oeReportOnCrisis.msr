@@ -9,8 +9,11 @@ import icrash.environment
 
 Operation Model {
 
-operation: actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID:dtCrisisID, AdtComment:dtComment):ptBoolean{
-prolog{"src/Operations/Environment/OUT/outactCoordinator-oeReportOnCrisis.pl"}
+operation: actCoordinator.outactCoordinator.oeReportOnCrisis(
+	AdtCrisisID:dtCrisisID, AdtComment:dtComment,
+	AdtCrisisSendSmsFamily:ptBoolean
+):ptBoolean{
+
 }
 
 }
