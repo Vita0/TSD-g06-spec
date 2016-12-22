@@ -6,16 +6,70 @@ import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.calendar
 
 import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
 import icrash.environment
 
 	Operation Model {
 
 operation: actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis(
 	AdtCrisisID:dtCrisisID,
-	AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers
+	AdtPhoneNumber:dtPhoneNumber
 ):ptBoolean{
-		// include below the specification information (pre,post or ocl or prolog)
+preP{
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  self.rnActor = TheActor
+  self.rnActor.rnSystem = TheSystem
 
+/* PreP01 */
+  and TheSystem.vpStarted = true
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{ 
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  let AdtCrisisID: dtCrisisID in
+  self.rnActor.rnSystem = TheSystem
+  self.rnActor = TheActor
+
+/* PreF01 */
+  and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
+  and ColCrisis->size().eq(1)
+}
+postF{
+ let TheSystem: ctState in
+ let  ActFamilyHuman:ctHuman in
+ let  TheactComCompany:actComCompany in
+ let  TheCrisis:ctCrisis in
+ let  AdtCrisisID:dtCrisisID in
+ let  AdtSMS:dtSMS in
+ let  AMessageForCrisisHandlers: dtComment in
+ 
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+ 
+/* PostF01 */
+ TheSystem.rnctHuman->select(id.eq(AdtCrisisID)) = TheCrisis
+ and AMessageForCrisisHandlers.value = 'The crisis family phone number has been added!'
+ and TheActor.rnInterfaceIN^ieMessage(AMessageForCrisisHandlers)
+
+/* PostF02 */
+and TheSystem.rnctHuman->select(ctCrisis.id.eq(AdtCrisisID)) = HumanCol1
+and AetHumanKind = familyMember
+and HumanCol1->select(kind.etEq(AetHumanKind)) = HumanCol2
+and if (HumanCol2->msrIsEmpty)
+    then ()
+    else (ActFamilyHuman.init(AdtPhoneNumber,AetHumanKind)
+    	  and TheSystem.rnactComCompany->any2(true) = TheactComCompany
+          and ActFamilyHuman@post.rnactComCompany = TheactComCompany
+          and ActFamilyHuman@post.rnHumanFamily = TheCrisis
+        )
+    endif
+}
+ /* Post Protocol:*/
+/* PostP01 */
+postP{true}
 		}
 	}
 }

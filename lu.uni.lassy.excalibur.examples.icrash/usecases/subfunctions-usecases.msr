@@ -110,7 +110,7 @@ import icrash.environment
     }
   }
 //----------------------------------------------------
-  use case system subfunction oeAddFamilyNumbersOnCrisis(AdtCrisisID:dtCrisisID,AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers) {
+  use case system subfunction oeAddFamilyNumbersOnCrisis(AdtCrisisID:dtCrisisID) {
   	actor actCoordinator[primary,active]
     returned messages {
       ieMessage(AMessage) returned to actCoordinator

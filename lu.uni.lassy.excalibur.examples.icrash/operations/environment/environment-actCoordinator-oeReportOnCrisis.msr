@@ -5,6 +5,8 @@ import lu.uni.lassy.messir.libraries.math
 import lu.uni.lassy.messir.libraries.string
 import lu.uni.lassy.messir.libraries.calendar
 import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
 import icrash.environment
 
 Operation Model {
@@ -13,7 +15,61 @@ operation: actCoordinator.outactCoordinator.oeReportOnCrisis(
 	AdtCrisisID:dtCrisisID, AdtComment:dtComment,
 	AdtCrisisSendSmsFamily:ptBoolean
 ):ptBoolean{
+preP{
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  self.rnActor = TheActor
+  self.rnActor.rnSystem = TheSystem
 
+/* PreP01 */
+  and TheSystem.vpStarted = true
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{ 
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  let AdtCrisisID: dtCrisisID in
+  self.rnActor.rnSystem = TheSystem
+  self.rnActor = TheActor
+
+/* PreF01 */
+  and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
+  and ColCrisis->size().eq(1)
+}
+postF{
+ let TheSystem: ctState in
+ let  ActFamilyHuman:ctHuman in
+ let  TheactComCompany:actComCompany in
+ let  TheCrisis:ctCrisis in
+ let  AdtCrisisID:dtCrisisID in
+ let  AdtSMS:dtSMS in
+ let  AMessageForCrisisHandlers: dtComment in
+ 
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+ 
+/* PostF01 */
+ TheSystem.rnctHuman->select(id.eq(AdtCrisisID)) = TheCrisis
+ and TheCrisis@post.comment = AdtComment
+ and AMessageForCrisisHandlers.value = 'The crisis comment has been updated !'
+ and TheActor.rnInterfaceIN^ieMessage(AMessageForCrisisHandlers)
+
+/* PostF02 */
+and if (AdtCrisisSendSmsFamily == true)
+	then (
+		TheSystem.rnctHuman->select(ctCrisis.id.eq(AdtCrisisID)) = HumanCol1
+		and HumanCol1->forAll(T:ctHuman|
+		    TheSystem.rnactComCompany->select(ctHuman.id.eq(T.id)) = TheactComCompany
+			and AdtSMS.value = 'The crisis report changed! New Report: '.concat(TheCrisis@post.comment.value)
+			and TheactComCompany.rnInterfaceIN^ieSmsSend(T.id,AdtSMS)
+		)
+	)
+	else ()
+	endif
+}
+ /* Post Protocol:*/
+/* PostP01 */
+postP{true}
 }
 
 }

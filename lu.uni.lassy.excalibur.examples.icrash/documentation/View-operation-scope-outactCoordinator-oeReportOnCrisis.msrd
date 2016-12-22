@@ -1,0 +1,10 @@
+/*
+@author Masha
+@date Thu Dec 22 13:36:24 MSK 2016
+*/
+
+
+@@view operation-scope-outactCoordinator-oeReportOnCrisis
+@model Operation icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis 
+@description ""
+@caption ""

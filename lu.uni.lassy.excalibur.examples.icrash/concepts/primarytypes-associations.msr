@@ -23,6 +23,10 @@ association assctCrisisctCoordinator
 	ctCrisis(rnHandled)[0..*]
 	ctCoordinator(rnHandler)[0..1]
 	
+association assctHumanFamilyctCrisis
+	ctHuman(rnHumanFamily)[1..*]
+	ctCrisis (rnCrisisFamily)[1..1]
+
 // With Actors
 
  		association assctHumanactComCompany 

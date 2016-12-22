@@ -1,0 +1,10 @@
+/*
+@author Masha
+@date Thu Dec 22 13:43:03 MSK 2016
+*/
+
+
+@@view operation-scope-outactCoordinator-oeAddFamilyNumbersOnCrisis
+@model Operation icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis 
+@description ""
+@caption ""

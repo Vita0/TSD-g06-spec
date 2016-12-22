@@ -30,8 +30,8 @@ import lu.uni.lassy.messir.libraries.calendar
 			output interface outactAdministrator{
 				
 				operation oeAddCoordinator(
-											AdtCoordinatorID:dtCoordinatorID ,
-											AdtLogin:dtLogin , 
+											AdtCoordinatorID:dtCoordinatorID,
+											AdtLogin:dtLogin, 
 											AdtPassword:dtPassword ):ptBoolean
 											
 				operation oeDeleteCoordinator(
@@ -65,7 +65,7 @@ import lu.uni.lassy.messir.libraries.calendar
 											):ptBoolean
 				operation oeAddFamilyNumbersOnCrisis(
 											AdtCrisisID:dtCrisisID,
-											AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers
+											AdtPhoneNumber:dtPhoneNumber
 											):ptBoolean
 				operation oeSetCrisisStatus(
 											AdtCrisisID:dtCrisisID ,

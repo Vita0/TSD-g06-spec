@@ -29,13 +29,7 @@ icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
 If AdtCrisisSendSmsFamily value equals true then the requesting actor is notified of this update and sending messages to family members.
 Else the requesting actor is just notified of this update. "
 @postF 
-"if AdtCrisisSendSmsFamily value equals true for each family phone number:
-if there is no ctHuman instance having same phone number and familyMember kind in the pre-state 
-then a new one is added in the post-state with given phone number and familyMember kind and is associated to the current communication company.
-else the pre-state one is chosen
-"
-@postF
-"if AdtCrisisSendSmsFamily value equals true:
+"if AdtCrisisSendSmsFamily value equals true for each ctHuman with familyMember kind
 a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family phone number, one acknowledgement)."
 @endPostF
 
