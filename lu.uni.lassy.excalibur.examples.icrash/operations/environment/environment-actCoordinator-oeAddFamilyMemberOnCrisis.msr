@@ -1,4 +1,4 @@
-package icrash.environment.operations.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis {
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis {
 
 import lu.uni.lassy.messir.libraries.primitives
 import lu.uni.lassy.messir.libraries.math
@@ -10,11 +10,12 @@ import icrash.concepts.primarytypes.classes
 import icrash.concepts.secondarytypes.datatypes
 import icrash.environment
 
-	Operation Model {
+Operation Model {
 
-operation: actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis(
+operation: icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis(
 	AdtCrisisID:dtCrisisID,
-	AdtPhoneNumber:dtPhoneNumber
+	AdtPhoneNumber:dtPhoneNumber,
+	AptComCompanyId:ptInteger
 ):ptBoolean{
 preP{
   let TheSystem: ctState in
@@ -33,6 +34,7 @@ preF{
   let ColCrisis:Bag(ctCrisis) in
   let TheCrisisFamily:ctCrisis in
   let HumanCol1:Bag(ctHuman) in
+  let TheActComCompanies:Bag(ctComCompany) in
 
   self.rnActor.rnSystem = TheSystem
   and self.rnActor = TheActor
@@ -44,6 +46,9 @@ preF{
   and TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
   and TheCrisisFamily.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = HumanCol1
   and HumanCol1->isEmpty() = true
+  /* PreF03 */
+  and TheSystem.rnctComCompany->select(id.eq(AptComCompanyId)) = ThectComCompanies
+  and ThectComCompanies->size().eq(1)
 }
 postF{
  let  TheSystem: ctState in
@@ -57,14 +62,16 @@ postF{
  
  self.rnActor.rnSystem = TheSystem
  and self.rnActor = TheActor
- 
+
 /* PostF01 */
 and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = TheCrisis
 and AetHumanKind = familyMember
 and ActFamilyHuman.init(AdtPhoneNumber,AetHumanKind)
-and TheSystem.rnactComCompany = TheActComCompany
+
+and TheSystem.rnctComCompany->select(id.eq(AptComCompanyId)).rnactComCompanyCol->any(true) = TheActComCompany
 
 and TheSystem.rnctHuman->select(id.eq(AdtPhoneNumber)) = HumanCol2
+HumanCol2->size()
 and if (HumanCol2->msrIsEmpty)
     then (
     	ActFamilyHuman@post.rnactComCompany = TheActComCompany

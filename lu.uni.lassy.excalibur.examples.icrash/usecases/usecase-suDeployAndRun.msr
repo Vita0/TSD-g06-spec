@@ -295,8 +295,23 @@ package icrash.usecases.suDeployAndRun {
 //----------------------------------------------------
         steve
         executed instanceof subfunction
-              oeReportOnCrisis("1","3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized"){
+              oeReportOnCrisis("1","3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized","true"){
                 ieMessage('The crisis comment has been updated !')
+                returned to steve
+                ieSmsSend("+3524666445000","The crisis report changed! New Report: 3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized") returned to tango
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeAddFamilyMemberOnCrisis("1","+3524666445001","2"){
+                ieMessage('The crisis family member has been added!')
+                returned to steve
+              }
+//----------------------------------------------------
+        steve
+        executed instanceof subfunction
+              oeDeleteFamilyMemberOnCrisis("1","+3524666445001"){
+                ieMessage('The crisis family member has been deleted')
                 returned to steve
               }
 //----------------------------------------------------

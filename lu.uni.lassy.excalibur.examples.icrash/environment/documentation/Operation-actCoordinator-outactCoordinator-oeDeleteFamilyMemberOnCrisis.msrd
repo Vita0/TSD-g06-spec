@@ -1,37 +1,37 @@
-/*
-@author Masha
-@date Fri Jan 13 16:06:22 MSK 2017
-*/
-
-
 @@Operation
 icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis
 //parameters
 @parameter
 icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis.AdtCrisisID
-""
+"the identification information used to determine the crisis to associate family member on"
 @parameter
 icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis.AdtPhoneNumber
-""
+"the family member phone number"
 @endParameters
 
-@description "gg
- "
+@description
+"sent to delete the family member from a specific handled crisis."
 //preProtocol descriptions
 @preP
-" "
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
 @endPreP
 //preFunctional descriptions
 @preF
-" "
+"it is supposed that there exist one crisis in the pre state having the given id."
+@preF
+"it is supposed that there exist family member with given phone number associated with given crisis in the pre state."
 @endPreF
 //postFunctional descriptions
 @postF 
-" "
+"The ctHuman instance with given phone number is excluded from family members associated with crisis."
+@postF
+"if there not exists ctHuman instance having same phone number among set of all family members in the pre-state then ctHuman instance with given phone number and familyMember kind is deleted in the post-state with associated actComCompany, else nothing."
+@postF
+"the requesting actor is notified of deleting family member."
 @endPostF
 //postProtocol descriptions
 @postP 
-" "
+"none"
 @endPostP
-//example
-@example" "

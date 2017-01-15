@@ -5,7 +5,7 @@ icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
 "the identification information used to determine the crisis to report on"
 @parameter icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis.AdtComment
 "the textual information commenting the crisis"
-@parameter icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis.AdtCrisisSendSmsFamily
+@parameter icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis.AptCrisisSendSmsFamily
 "the boolean value which determines whether system need to send sms messages to family members"
 @endParameters
 @description
@@ -26,14 +26,13 @@ icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
 //postFunctional descriptions
 @postF 
 "the comment attribute of the crisis instance having the given id is replaced by the given one.
-If AdtCrisisSendSmsFamily value equals true then the requesting actor is notified of this update and sending messages to family members.
-Else the requesting actor is just notified of this update. "
+The requesting actor is notified of this update. "
 @postF 
 "if AdtCrisisSendSmsFamily value equals true for each ctHuman with familyMember kind
-a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family phone number, one acknowledgement)."
+a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family member, one acknowledgement)."
 @endPostF
 
 //postProtocol descriptions
 @postP 
-" none"
+"none"
 @endPostP

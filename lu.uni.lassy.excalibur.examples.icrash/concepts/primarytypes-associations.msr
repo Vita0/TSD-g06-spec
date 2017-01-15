@@ -35,7 +35,7 @@ association assctHumanFamilyctCrisis
 
  		association assctComCompanyactComCompany 
  					ctComCompany(rnctComCompany)[1..1]
- 					actComCompany(rnactComCompany)[1..1]
+ 					actComCompany(rnactComCompanyCol)[1..1]
  					
  		association assctCoordinatoractCoordinator 
  					ctCoordinator(rnctCoordinator)[1..1]

@@ -1,0 +1,22 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeDeleteFamilyMemberOnCrisis
+@description "The actCoordinators's goal is to delete the family member on specific handled crisis."
+@parameter icrash.usecases.subfunctions.oeDeleteFamilyMemberOnCrisis.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeDeleteFamilyMemberOnCrisis.AdtPhoneNumber ""
+@endParameters
+@protocolCondition
+"the iCrash system has been deployed."
+@protocolCondition
+"the coordinator logged previously and did not log out"
+@endProtocolConditions
+@preCondition
+"
+"
+@endPreConditions
+@postCondition
+"a family member is deleted from the system,
+a simple text message ieMessage('The crisis family member has been deleted!') is sent to coordinator."
+@endPostConditions
+@additionalInformation
+"
+none
+"

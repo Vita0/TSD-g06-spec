@@ -1,21 +1,24 @@
 @@Use Case Subfunction icrash.usecases.subfunctions.oeReportOnCrisis hidden
 @description
-"goal is to update the textual information available for a specific handled crisis.
-"
+"goal is to update the textual information available for a specific handled crisis and 
+to send important information about a specific handled crisis to the family members."
 @parameter icrash.usecases.subfunctions.oeReportOnCrisis.AdtCrisisID ""
 @parameter icrash.usecases.subfunctions.oeReportOnCrisis.AdtComment ""
+@parameter icrash.usecases.subfunctions.oeReportOnCrisis.AdtCrisisSendSmsFamily ""
 @endParameters
 @protocolCondition
-"
-"
+"the iCrash system has been deployed."
+@protocolCondition
+"the coordinator logged previously and did not log out"
 @endProtocolConditions
 @preCondition
 "
 "
 @endPreConditions
 @postCondition
-"
-"
+"a report is updated in the system, a simple text message ieMessage('The crisis comment has been updated !') is sent to coordinator."
+@postCondition
+"if AdtCrisisSendSmsFamily equals true then family members will get sms message like: 'The crisis report changed! New Report: ' plus new report"
 @endPostConditions
 @additionalInformation
 "

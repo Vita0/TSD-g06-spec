@@ -474,6 +474,14 @@
   <semanticResources>operations/environment/environment-actCoordinator-oeDeleteFamilyNumberOnCrisis.msr</semanticResources>
   <semanticResources>operations/environment/environment-actCoordinator-oeDeleteFamilyMemberOnCrisis.msr</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeDeleteFamilyMemberOnCrisis.msrd</semanticResources>
+  <semanticResources>operations/environment/environment-actCoordinator-oeAddFamilyMemberOnCrisis.msr</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeAddFamilyMemberOnCrisis.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Association-assctComCompanyactComCompany.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Class-ctComCompany.msrd</semanticResources>
+  <semanticResources>concepts/documentation/Operation-ctComCompany-init.msrd</semanticResources>
+  <semanticResources>operations/concepts/primarytypes-classes/primarytypes-classes-ctComCompany-init.msr</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeDeleteFamilyMemberOnCrisis.msrd</semanticResources>
+  <semanticResources>usecases/documentation/UseCase-oeAddFamilyMemberOnCrisis.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_VxVZ4PWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

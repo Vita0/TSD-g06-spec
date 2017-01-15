@@ -1,0 +1,3 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctComCompanyactComCompany
+@description 
+"in order to associate the added human to communication company, which send them messages. For selection communication company this association is necessary, it let us select actComCompany by id of ctComCompany."

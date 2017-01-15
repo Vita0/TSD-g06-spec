@@ -61,11 +61,12 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation oeReportOnCrisis(
 											AdtCrisisID:dtCrisisID ,
 											AdtComment:dtComment,
-											AdtCrisisSendSmsFamily:ptBoolean 
+											AptCrisisSendSmsFamily:ptBoolean 
 											):ptBoolean
-				operation oeAddFamilyNumbersOnCrisis(
+				operation oeAddFamilyMemberOnCrisis(
 											AdtCrisisID:dtCrisisID,
-											AdtPhoneNumber:dtPhoneNumber
+											AdtPhoneNumber:dtPhoneNumber,
+											AptComCompanyId:ptInteger
 											):ptBoolean
 				operation oeDeleteFamilyMemberOnCrisis(
 											AdtCrisisID:dtCrisisID,

@@ -22,9 +22,9 @@
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisHandler
 "sent to declare himself as been the handler of a crisis having the specified id."
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeReportOnCrisis
-"sent to update the textual information available for a specific handled crisis."
-@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyNumbersOnCrisis
-"sent to add family phone number for a specific handled crisis."
+"sent to update the textual information available for a specific handled crisis and if necessary send it to family members."
+@outputEvent icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis
+"sent to add family member with given phone number and selected communication company to a specific handled crisis."
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis
 "sent to delete family member by phone number for a specific handled crisis."
 @outputEvent icrash.environment.actCoordinator.outactCoordinator.oeSetCrisisStatus

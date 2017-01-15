@@ -526,34 +526,6 @@ test step ts03oeLogin order 03{
       }
      }
 //---------------------------------------------------------------------
- test step ts20oeReportOnCr44isis order 20{
-        variables{
-            TheActor : actCoordinator
-            AdtCrisisID : dtCrisisID
-            AdtComment : dtComment
-          }
-        constraints{
-            TheActor=TheSystem.rnactCoordinator
-            ->select(a | a.rnctCoordinator.login.value.eq('steve'))
-            ->any2(true) 
-            AdtCrisisID.value= '1'
-            //anAdtComment.value = '3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized'
-          }
-        test message{
-          out:TheActor sends to system actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID,AdtComment)
-        }
-        oracle{
-          variables{
-            AMessage:ptString
-          }
-          constraints{
-          AMessage = 'The crisis comment has been updated !'
-          TheActor.inactAuthenticated.ieMessage(AMessage)
-        }
-      }
-     }
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
  test step ts19oeCloseCrisis order 19{
         variables{
             TheActor : actCoordinator

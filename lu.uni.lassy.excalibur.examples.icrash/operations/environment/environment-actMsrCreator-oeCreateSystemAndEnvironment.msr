@@ -25,6 +25,8 @@ postF{
   let AcrisisReminderPeriod: dtSecond in
   let AmaxCrisisReminderPeriod: dtSecond in
   let AvpStarted: ptBoolean in
+  let TheCounter: ptInteger in
+  let ThectComCompany: ctComCompany in
 
   /* PostF01 -- MUST ALWAYS BE MADE FIRST -- */ 
   AnextValueForAlertID.value.eq(1)
@@ -51,8 +53,15 @@ postF{
   and AactMsrCreator.init()
   /* PostF03 */ 
   and let AactComCompanyCol: Bag(actComCompany) in
-  AactComCompanyCol->size() = AqtyComCompanies
-  AactComCompanyCol-> forAll(init())
+  TheCounter = 0
+  and AactComCompanyCol->size() = AqtyComCompanies
+  and AactComCompanyCol-> forAll(init())
+  and AactComCompanyCol->forAll(T:actComCompany|
+	  		ThectComCompany.init(TheCounter)
+	  		T@post.rnctComCompany = ThectComCompany
+			and ThectComCompany@post.rnactComCompanyCol = T
+			TheCounter = TheCounter + 1
+		)
  /* PostF04*/ 
   and AactAdministrator.init()
   /* PostF05*/ 

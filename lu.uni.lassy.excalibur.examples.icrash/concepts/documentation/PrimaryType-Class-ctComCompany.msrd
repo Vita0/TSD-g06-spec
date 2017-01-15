@@ -1,0 +1,11 @@
+@@Primary Type Class icrash.concepts.primarytypes.classes.ctComCompany
+@description
+"used to model system's representation about the actors that have the responsibility to send sms messages of humans."
+@attribute
+icrash.concepts.primarytypes.classes.ctComCompany.id
+"a unique identification information."
+@endAttributes
+@operation
+icrash.concepts.primarytypes.classes.ctComCompany.init
+"used to initialize the current object as a new instance of the ctComCompany type."
+@endOperations

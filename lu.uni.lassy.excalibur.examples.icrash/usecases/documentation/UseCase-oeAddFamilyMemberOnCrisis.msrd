@@ -1,0 +1,20 @@
+@@Use Case Subfunction icrash.usecases.subfunctions.oeAddFamilyMemberOnCrisis
+@description "The actCoordinators's goal is to add the family member on specific handled crisis."
+@parameter icrash.usecases.subfunctions.oeAddFamilyMemberOnCrisis.AdtCrisisID ""
+@parameter icrash.usecases.subfunctions.oeAddFamilyMemberOnCrisis.AdtPhoneNumber ""
+@parameter icrash.usecases.subfunctions.oeAddFamilyMemberOnCrisis.AptComCompanyId ""
+@endParameters
+@protocolCondition
+"the iCrash system has been deployed."
+@protocolCondition
+"the coordinator logged previously and did not log out"
+@endProtocolConditions
+@preCondition
+""
+@endPreConditions
+@postCondition
+"a family member is added to the system and associated to the specific crisis,
+a simple text message ieMessage('The crisis family member has been added!') is sent to coordinator."
+@endPostConditions
+@additionalInformation
+"none"

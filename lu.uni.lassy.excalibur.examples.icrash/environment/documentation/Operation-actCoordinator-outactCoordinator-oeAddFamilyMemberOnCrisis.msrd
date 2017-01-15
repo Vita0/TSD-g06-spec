@@ -1,0 +1,42 @@
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis.AdtCrisisID
+"the identification information used to determine the crisis to associate family member on"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis.AdtPhoneNumber
+"the family member phone number"
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis.AptComCompanyId
+"the identification information used to determine the family number communication company"
+@endParameters
+
+@description
+"sent to associate the family member to a specific handled crisis."
+
+//preProtocol descriptions
+@preP
+"the system is started"
+@preP
+"the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)"
+@endPreP
+//preFunctional descriptions
+@preF
+"it is supposed that there exist one crisis in the pre state having the given id."
+@preF
+"it is supposed that there not exist family member with given phone number associated with given crisis in the pre state."
+@preF
+"it is supposed that there exist one ctComCompany in the pre state having the given communication company id."
+@endPreF
+//postFunctional descriptions
+@postF 
+"if there is no ctHuman instance having same phone number in the pre-state 
+then a new one is added in the post-state with given phone number and familyMember kind; if there exist ctComCompany with given id, created ctHuman is associated to selected actComCompany, else it associated to any communication company. The crisis having the given id is associated to family member."
+@postF
+"the requesting actor is notified of adding family member."
+@endPostF
+//postProtocol descriptions
+@postP 
+"none"
+@endPostP

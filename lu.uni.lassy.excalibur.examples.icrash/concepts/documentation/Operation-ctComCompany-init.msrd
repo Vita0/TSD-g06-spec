@@ -1,0 +1,14 @@
+@@Operation
+icrash.concepts.primarytypes.classes.ctComCompany.init
+//parameters
+@parameter
+icrash.concepts.primarytypes.classes.ctComCompany.init.Aid
+"the identification information of a new instance of the ctComCompany type."
+@endParameters
+
+@description 
+"used to initialize the current object as a new instance of the ctComCompany type."
+//postFunctional descriptions
+@postF 
+"true iff the system poststate includes the current object as a new ctComCompany instance having its attributes equal to the ones provided as parameter."
+@endPostF
