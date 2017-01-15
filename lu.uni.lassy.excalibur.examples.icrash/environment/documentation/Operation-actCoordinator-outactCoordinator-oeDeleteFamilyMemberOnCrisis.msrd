@@ -1,0 +1,37 @@
+/*
+@author Masha
+@date Fri Jan 13 16:06:22 MSK 2017
+*/
+
+
+@@Operation
+icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis
+//parameters
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis.AdtCrisisID
+""
+@parameter
+icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis.AdtPhoneNumber
+""
+@endParameters
+
+@description "gg
+ "
+//preProtocol descriptions
+@preP
+" "
+@endPreP
+//preFunctional descriptions
+@preF
+" "
+@endPreF
+//postFunctional descriptions
+@postF 
+" "
+@endPostF
+//postProtocol descriptions
+@postP 
+" "
+@endPostP
+//example
+@example" "

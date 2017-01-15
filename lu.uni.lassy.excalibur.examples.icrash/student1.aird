@@ -447,7 +447,6 @@
   <semanticResources>concepts/documentation/PrimaryType-Datatype-dtFamilyPhoneNumbers.msrd</semanticResources>
   <semanticResources>usecases/documentation/UseCase-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
   <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
-  <semanticResources>operations/primarytypes-datatypes-dtFamilyPhoneNumbers.msr</semanticResources>
   <semanticResources>operations/concepts/primarytypes-datatypes/primarytypes-datatypes-dtFamilyPhoneNumbers-is.msr</semanticResources>
   <semanticResources>operations/environment/environment-actCoordinator-oeAddFamilyNumbersOnCrisis.msr</semanticResources>
   <semanticResources>documentation/View-operation-scope-dtFamilyPhoneNumbers-is.msrd</semanticResources>
@@ -455,6 +454,10 @@
   <semanticResources>testcaseinstance-tc-tci.msr</semanticResources>
   <semanticResources>documentation/View-operation-scope-outactCoordinator-oeReportOnCrisis.msrd</semanticResources>
   <semanticResources>documentation/View-operation-scope-outactCoordinator-oeAddFamilyNumbersOnCrisis.msrd</semanticResources>
+  <semanticResources>concepts/documentation/PrimaryType-Association-assctHumanFamilyctCrisis.msrd</semanticResources>
+  <semanticResources>operations/environment/environment-actCoordinator-oeDeleteFamilyNumberOnCrisis.msr</semanticResources>
+  <semanticResources>operations/environment/environment-actCoordinator-oeDeleteFamilyMemberOnCrisis.msr</semanticResources>
+  <semanticResources>environment/documentation/Operation-actCoordinator-outactCoordinator-oeDeleteFamilyMemberOnCrisis.msrd</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_UmILAPWqEeSOM9Kfym77Zg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/lu.uni.lassy.excalibur.ui.viewer/description/excalibur_models.odesign#//@ownedViewpoints[name='msr-viewpoint']"/>
   </ownedViews>

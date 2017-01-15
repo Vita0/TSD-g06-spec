@@ -1,0 +1,2 @@
+@@Primary Type Association icrash.concepts.primarytypes.associations.assctHumanFamilyctCrisis
+@description "a family member (human) is related to one or more crisis. An crisis can be related to zero or more family members."

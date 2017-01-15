@@ -510,7 +510,7 @@ test step ts03oeLogin order 03{
             ->any2(true) 
             AdtCrisisID.value= '1'
             AdtComment.value = '3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized'
-            AdtCrisisSendSmsFamily.value = true
+            AdtCrisisSendSmsFamily = false
           }
         test message{
           out:TheActor sends to system actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID,AdtComment,AdtCrisisSendSmsFamily)

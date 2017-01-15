@@ -19,47 +19,52 @@ preP{
   let TheSystem: ctState in
   let TheActor: actCoordinator in
   self.rnActor = TheActor
-  self.rnActor.rnSystem = TheSystem
+  and self.rnActor.rnSystem = TheSystem
 
-/* PreP01 */
+  /* PreP01 */
   and TheSystem.vpStarted = true
+  /* PreP02 */
   and TheActor.rnctAuthenticated.vpIsLogged = true
 }
 preF{ 
   let TheSystem: ctState in
   let TheActor: actCoordinator in
-  let AdtCrisisID: dtCrisisID in
+  let ColCrisis:Bag(ctCrisis) in
+
   self.rnActor.rnSystem = TheSystem
-  self.rnActor = TheActor
+  and self.rnActor = TheActor
 
 /* PreF01 */
   and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
-  and ColCrisis->size().eq(1)
+  and ColCrisis->isEmpty() = false
 }
 postF{
- let TheSystem: ctState in
+ let  TheSystem: ctState in
+ let  TheActor: actCoordinator in
  let  ActFamilyHuman:ctHuman in
- let  TheactComCompany:actComCompany in
+ let  TheActComCompany:actComCompany in
  let  TheCrisis:ctCrisis in
- let  AdtCrisisID:dtCrisisID in
+ let  TheCrisisFamily:ctCrisis in
  let  AdtSMS:dtSMS in
- let  AMessageForCrisisHandlers: dtComment in
+ let  AptStringMessageForCrisisHandlers:ptString in
+ let  HumanCol1:Bag(ctHuman) in
  
-  self.rnActor.rnSystem = TheSystem
-  and self.rnActor = TheActor
+ self.rnActor.rnSystem = TheSystem
+ and self.rnActor = TheActor
  
 /* PostF01 */
- TheSystem.rnctHuman->select(id.eq(AdtCrisisID)) = TheCrisis
+ and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = TheCrisis
  and TheCrisis@post.comment = AdtComment
- and AMessageForCrisisHandlers.value = 'The crisis comment has been updated !'
- and TheActor.rnInterfaceIN^ieMessage(AMessageForCrisisHandlers)
+ and AptStringMessageForCrisisHandlers.eq('The crisis comment has been updated !')
+ and TheActor.rnInterfaceIN^ieMessage(AptStringMessageForCrisisHandlers)
 
 /* PostF02 */
 and if (AdtCrisisSendSmsFamily == true)
 	then (
-		TheSystem.rnctHuman->select(ctCrisis.id.eq(AdtCrisisID)) = HumanCol1
+		TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
+		and TheCrisisFamily.rnHumanFamily->any(true) = HumanCol1
 		and HumanCol1->forAll(T:ctHuman|
-		    TheSystem.rnactComCompany->select(ctHuman.id.eq(T.id)) = TheactComCompany
+			TheSystem.rnctHuman->select(id.eq(T.id)).rnactComCompany->any(true) = TheActComCompany
 			and AdtSMS.value = 'The crisis report changed! New Report: '.concat(TheCrisis@post.comment.value)
 			and TheactComCompany.rnInterfaceIN^ieSmsSend(T.id,AdtSMS)
 		)

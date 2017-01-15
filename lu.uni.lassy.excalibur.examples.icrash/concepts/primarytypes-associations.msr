@@ -24,13 +24,17 @@ association assctCrisisctCoordinator
 	ctCoordinator(rnHandler)[0..1]
 	
 association assctHumanFamilyctCrisis
-	ctHuman(rnHumanFamily)[1..*]
-	ctCrisis (rnCrisisFamily)[1..1]
+	ctHuman(rnHumanFamily)[0..*]
+	ctCrisis(rnCrisisFamily)[1..*]
 
 // With Actors
 
  		association assctHumanactComCompany 
  					ctHuman(rnctHuman)[0..*]
+ 					actComCompany(rnactComCompany)[1..1]
+
+ 		association assctComCompanyactComCompany 
+ 					ctComCompany(rnctComCompany)[1..1]
  					actComCompany(rnactComCompany)[1..1]
  					
  		association assctCoordinatoractCoordinator 

@@ -20,52 +20,65 @@ preP{
   let TheSystem: ctState in
   let TheActor: actCoordinator in
   self.rnActor = TheActor
-  self.rnActor.rnSystem = TheSystem
+  and self.rnActor.rnSystem = TheSystem
 
-/* PreP01 */
+  /* PreP01 */
   and TheSystem.vpStarted = true
+  /* PreP02 */
   and TheActor.rnctAuthenticated.vpIsLogged = true
 }
 preF{ 
   let TheSystem: ctState in
   let TheActor: actCoordinator in
-  let AdtCrisisID: dtCrisisID in
+  let ColCrisis:Bag(ctCrisis) in
+  let TheCrisisFamily:ctCrisis in
+  let HumanCol1:Bag(ctHuman) in
+
   self.rnActor.rnSystem = TheSystem
-  self.rnActor = TheActor
+  and self.rnActor = TheActor
 
 /* PreF01 */
   and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
   and ColCrisis->size().eq(1)
+  /* PreF02 */
+  and TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
+  and TheCrisisFamily.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = HumanCol1
+  and HumanCol1->isEmpty() = true
 }
 postF{
- let TheSystem: ctState in
+ let  TheSystem: ctState in
+ let  TheActor: actCoordinator in
  let  ActFamilyHuman:ctHuman in
- let  TheactComCompany:actComCompany in
+ let  TheActComCompany:actComCompany in
  let  TheCrisis:ctCrisis in
- let  AdtCrisisID:dtCrisisID in
- let  AdtSMS:dtSMS in
- let  AMessageForCrisisHandlers: dtComment in
+ let  AptStringMessageForCrisisHandlers:ptString in
+ let  AetHumanKind:etHumanKind in
+ let  HumanCol2:Bag(ctHuman) in
  
-  self.rnActor.rnSystem = TheSystem
-  and self.rnActor = TheActor
+ self.rnActor.rnSystem = TheSystem
+ and self.rnActor = TheActor
  
 /* PostF01 */
- TheSystem.rnctHuman->select(id.eq(AdtCrisisID)) = TheCrisis
- and AMessageForCrisisHandlers.value = 'The crisis family phone number has been added!'
- and TheActor.rnInterfaceIN^ieMessage(AMessageForCrisisHandlers)
+and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = TheCrisis
+and AetHumanKind = familyMember
+and ActFamilyHuman.init(AdtPhoneNumber,AetHumanKind)
+and TheSystem.rnactComCompany = TheActComCompany
+
+and TheSystem.rnctHuman->select(id.eq(AdtPhoneNumber)) = HumanCol2
+and if (HumanCol2->msrIsEmpty)
+    then (
+    	ActFamilyHuman@post.rnactComCompany = TheActComCompany
+		and TheActComCompany@post.rnctHuman = ActFamilyHuman
+        )
+    else ()
+    endif
+
+and ActFamilyHuman@post.rnCrisisFamily = TheCrisis
+and TheCrisis@post.rnHumanFamily = ActFamilyHuman
 
 /* PostF02 */
-and TheSystem.rnctHuman->select(ctCrisis.id.eq(AdtCrisisID)) = HumanCol1
-and AetHumanKind = familyMember
-and HumanCol1->select(kind.etEq(AetHumanKind)) = HumanCol2
-and if (HumanCol2->msrIsEmpty)
-    then ()
-    else (ActFamilyHuman.init(AdtPhoneNumber,AetHumanKind)
-    	  and TheSystem.rnactComCompany->any2(true) = TheactComCompany
-          and ActFamilyHuman@post.rnactComCompany = TheactComCompany
-          and ActFamilyHuman@post.rnHumanFamily = TheCrisis
-        )
-    endif
+and AptStringMessageForCrisisHandlers.eq('The crisis family member has been added!')
+and TheActor.rnInterfaceIN^ieMessage(AptStringMessageForCrisisHandlers)
 }
  /* Post Protocol:*/
 /* PostP01 */
