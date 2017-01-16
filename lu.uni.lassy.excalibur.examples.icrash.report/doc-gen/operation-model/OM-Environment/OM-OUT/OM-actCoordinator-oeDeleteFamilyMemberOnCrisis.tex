@@ -1,0 +1,46 @@
+\subsection{Operation Model for oeDeleteFamilyMemberOnCrisis}
+
+\label{OM-oeDeleteFamilyMemberOnCrisis}
+
+
+The \msrcode{oeDeleteFamilyMemberOnCrisis} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeDeleteFamilyMemberOnCrisis}{sent to delete the family member from a specific handled crisis.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis to associate family member on} 
+	\addnumbereddoublerow{}{AdtPhoneNumber: dtPhoneNumber}{the family member phone number} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one crisis in the pre state having the given id.}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist family member with given phone number associated with given crisis in the pre state.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{The ctHuman instance with given phone number is excluded from family members associated with crisis.}
+	\addnumberedsinglerow{PostF}{if there not exists ctHuman instance having same phone number among set of all family members in the pre-state then ctHuman instance with given phone number and familyMember kind is deleted in the post-state with associated actComCompany, else nothing.}
+	\addnumberedsinglerow{PostF}{the requesting actor is notified of deleting family member.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+

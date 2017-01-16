@@ -12,7 +12,7 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 	\addrowheading{Parameters}
 	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis to report on} 
 	\addnumbereddoublerow{}{AdtComment: dtComment}{the textual information commenting the crisis} 
-	\addnumbereddoublerow{}{AdtCrisisSendSmsFamily: ptBoolean}{the boolean value which determines whether system need to send sms messages to family members} 
+	\addnumbereddoublerow{}{AptCrisisSendSmsFamily: ptBoolean}{the boolean value which determines whether system need to send sms messages to family members} 
 
 	\addrowheading{Return type}
 	\addsinglerow{ptBoolean}
@@ -26,18 +26,12 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 
 	\addrowheading{Post-Condition (functional)}
 	\addnumberedsinglerow{PostF}{the comment attribute of the crisis instance having the given id is replaced by the given one.
-	If AdtCrisisSendSmsFamily value equals true then the requesting actor is notified of this update and sending messages to family members.
-	Else the requesting actor is just notified of this update. }
-	\addnumberedsinglerow{PostF}{if AdtCrisisSendSmsFamily value equals true for each family phone number:
-	if there is no ctHuman instance having same phone number and familyMember kind in the pre-state 
-	then a new one is added in the post-state with given phone number and familyMember kind and is associated to the current communication company.
-	else the pre-state one is chosen
-	}
-	\addnumberedsinglerow{PostF}{if AdtCrisisSendSmsFamily value equals true:
-	a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family phone number, one acknowledgement).}
+	The requesting actor is notified of this update. }
+	\addnumberedsinglerow{PostF}{if AdtCrisisSendSmsFamily value equals true for each ctHuman with familyMember kind
+	a report is sent to the communication company for any human (family member) associated to the crisis (i.e. one family member, one acknowledgement).}
 
 	\addrowheading{Post-Condition (protocol)}
-	\addnumberedsinglerow{PostP}{ none}
+	\addnumberedsinglerow{PostP}{none}
 	\end{operationmodel}
 
 
@@ -50,4 +44,18 @@ The \msrcode{oeReportOnCrisis} operation has the following properties:
 
 
 
+
+Figure \ref{fig:lu.uni.lassy.excalibur.examples.icrash-OM-scopeView-operation-scope-outactCoordinator-oeReportOnCrisis}
+
+\begin{figure}[htbp]
+\begin{center}
+
+\includegraphics[
+angle=0
+]{./images-report-gen/operation-model/operation-scope-outactCoordinator-oeReportOnCrisis.eps}
+\end{center}
+\caption[lu.uni.lassy.excalibur.examples.icrash Operation Scope: operation-scope-outactCoordinator-oeReportOnCrisis]{}
+\label{fig:lu.uni.lassy.excalibur.examples.icrash-OM-scopeView-operation-scope-outactCoordinator-oeReportOnCrisis}
+\end{figure}
+\vspace{0.5cm}
 

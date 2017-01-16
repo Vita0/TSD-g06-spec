@@ -1,0 +1,95 @@
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.environment
+
+Operation Model {
+
+operation: icrash.environment.actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis(
+	AdtCrisisID:dtCrisisID,
+	AdtPhoneNumber:dtPhoneNumber,
+	AptComCompanyId:ptInteger
+):ptBoolean{
+preP{
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  self.rnActor = TheActor
+  and self.rnActor.rnSystem = TheSystem
+
+  /* PreP01 */
+  and TheSystem.vpStarted = true
+  /* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{ 
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  let ColCrisis:Bag(ctCrisis) in
+  let TheCrisisFamily:ctCrisis in
+  let HumanCol1:Bag(ctHuman) in
+  let TheActComCompanies:Bag(ctComCompany) in
+
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+
+/* PreF01 */
+  and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
+  and ColCrisis->size().eq(1)
+  /* PreF02 */
+  and TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
+  and TheCrisisFamily.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = HumanCol1
+  and HumanCol1->isEmpty() = true
+  /* PreF03 */
+  and TheSystem.rnctComCompany->select(id.eq(AptComCompanyId)) = ThectComCompanies
+  and ThectComCompanies->size().eq(1)
+}
+postF{
+ let  TheSystem: ctState in
+ let  TheActor: actCoordinator in
+ let  ActFamilyHuman:ctHuman in
+ let  TheActComCompany:actComCompany in
+ let  TheCrisis:ctCrisis in
+ let  AptStringMessageForCrisisHandlers:ptString in
+ let  AetHumanKind:etHumanKind in
+ let  HumanCol2:Bag(ctHuman) in
+ 
+ self.rnActor.rnSystem = TheSystem
+ and self.rnActor = TheActor
+
+/* PostF01 */
+and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = TheCrisis
+and AetHumanKind = familyMember
+and ActFamilyHuman.init(AdtPhoneNumber,AetHumanKind)
+
+and TheSystem.rnctComCompany->select(id.eq(AptComCompanyId)).rnactComCompanyCol->any(true) = TheActComCompany
+
+and TheSystem.rnctHuman->select(id.eq(AdtPhoneNumber)) = HumanCol2
+HumanCol2->size()
+and if (HumanCol2->msrIsEmpty)
+    then (
+    	ActFamilyHuman@post.rnactComCompany = TheActComCompany
+		and TheActComCompany@post.rnctHuman = ActFamilyHuman
+        )
+    else ()
+    endif
+
+and ActFamilyHuman@post.rnCrisisFamily = TheCrisis
+and TheCrisis@post.rnHumanFamily = ActFamilyHuman
+
+/* PostF02 */
+and AptStringMessageForCrisisHandlers.eq('The crisis family member has been added!')
+and TheActor.rnInterfaceIN^ieMessage(AptStringMessageForCrisisHandlers)
+}
+ /* Post Protocol:*/
+/* PostP01 */
+postP{true}
+		}
+	}
+}

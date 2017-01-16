@@ -66,6 +66,12 @@ import lu.uni.lassy.messir.libraries.calendar
 				operation isAllocatedIfPossible():ptBoolean
 			}
 			
+			
+			class ctComCompany role rnctComCompany cardinality [0..*]{
+				attribute id:ptInteger
+
+				operation init(Aid:ptInteger):ptBoolean
+			}
 
 
 			class ctHuman role rnctHuman cardinality [0..*]{

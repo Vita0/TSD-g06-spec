@@ -1,0 +1,43 @@
+\subsubsection{subfunction-oeAddFamilyMemberOnCrisis}
+
+\label{RE-use-case-oeAddFamilyMemberOnCrisis}
+
+
+The actCoordinators's goal is to add the family member on specific handled crisis.		  
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{oeAddFamilyMemberOnCrisis}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{subfunction}
+  
+\addrowheading{Parameters}
+\addnumberedsinglerow{AdtCrisisID: dtCrisisID}{}
+\addnumberedsinglerow{AdtPhoneNumber: dtPhoneNumber}{}
+\addnumberedsinglerow{AptComCompanyId: ptInteger}{}
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[active]}}
+
+
+
+\addrowheading{Goal(s) description}
+\addsinglerow{The actCoordinators's goal is to add the family member on specific handled crisis.}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{the iCrash system has been deployed.}
+\addnumberedsinglerow{}{the coordinator logged previously and did not log out}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{a family member is added to the system and associated to the specific crisis,
+a simple text message ieMessage('The crisis family member has been added!') is sent to coordinator.}
+
+\addrowheading{Additional Information}
+\addsinglerow{none}
+
+\end{usecase} 
+

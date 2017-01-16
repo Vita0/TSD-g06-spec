@@ -1,0 +1,395 @@
+package ^test.tci {
+	import lu.uni.lassy.excalibur.examples.icrash.tests.testcase01
+	import icrash.environment
+	import lu.uni.lassy.messir.libraries.primitives
+	import lu.uni.lassy.messir.libraries.calendar
+	import icrash.concepts.primarytypes.datatypes
+	import icrash.concepts.secondarytypes.datatypes
+	import icrash.concepts.primarytypes.classes
+
+	Test Model {
+
+		test case instance tci : testcase01 {
+			test step instance tsi01 : testcase01.ts01oeCreateSystemAndEnvironment {
+				variables {
+					Creator : testcase01.ts01oeCreateSystemAndEnvironment.Creator= "Creator"
+					AqtyComCompanies : testcase01.ts01oeCreateSystemAndEnvironment.AqtyComCompanies= "AqtyComCompanies"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi02 : testcase01.ts02oeSetClock {
+				variables {
+					TheActor : testcase01.ts02oeSetClock.TheActor= "TheActor"
+					ACurrentClock : testcase01.ts02oeSetClock.ACurrentClock= "ACurrentClock"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi03 : testcase01.ts03oeLogin {
+				variables {
+					TheActor : testcase01.ts03oeLogin.TheActor= "TheActor"
+					AdtLogin : testcase01.ts03oeLogin.AdtLogin= "AdtLogin"
+					AdtPassword : testcase01.ts03oeLogin.AdtPassword= "AdtPassword"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts03oeLogin.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi04 : testcase01.ts04oeAddCoordinator {
+				variables {
+					TheActor : testcase01.ts04oeAddCoordinator.TheActor= "TheActor"
+					AdtCoordinatorID : testcase01.ts04oeAddCoordinator.AdtCoordinatorID= "AdtCoordinatorID"
+					AdtLogin : testcase01.ts04oeAddCoordinator.AdtLogin= "AdtLogin"
+					AdtPassword : testcase01.ts04oeAddCoordinator.AdtPassword= "AdtPassword"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi05 : testcase01.ts05oeLogout {
+				variables {
+					TheActor : testcase01.ts05oeLogout.TheActor= "TheActor"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts05oeLogout.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi06 : testcase01.ts06oeSetClock02 {
+				variables {
+					TheActor : testcase01.ts06oeSetClock02.TheActor= "TheActor"
+					ACurrentClock : testcase01.ts06oeSetClock02.ACurrentClock= "ACurrentClock"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi07 : testcase01.ts07oeAlert1 {
+				variables {
+					TheActor : testcase01.ts07oeAlert1.TheActor= "TheActor"
+					AetHumanKind : testcase01.ts07oeAlert1.AetHumanKind= "AetHumanKind"
+					AdtDate : testcase01.ts07oeAlert1.AdtDate= "AdtDate"
+					AdtTime : testcase01.ts07oeAlert1.AdtTime= "AdtTime"
+					AdtPhoneNumber : testcase01.ts07oeAlert1.AdtPhoneNumber= "AdtPhoneNumber"
+					AdtGPSLocation : testcase01.ts07oeAlert1.AdtGPSLocation= "AdtGPSLocation"
+					AdtComment : testcase01.ts07oeAlert1.AdtComment= "AdtComment"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AdtSMS : testcase01.ts07oeAlert1.AdtSMS= "AdtSMS"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi08 : testcase01.ts08oeSetClock03 {
+				variables {
+					TheActor : testcase01.ts08oeSetClock03.TheActor= "TheActor"
+					ACurrentClock : testcase01.ts08oeSetClock03.ACurrentClock= "ACurrentClock"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi09 : testcase01.ts09oeSollicitateCrisisHandling {
+				variables {
+					TheActor : testcase01.ts09oeSollicitateCrisisHandling.TheActor= "TheActor"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						TheAdministrator : testcase01.ts09oeSollicitateCrisisHandling.TheAdministrator= "TheAdministrator"
+						TheCoordinator : testcase01.ts09oeSollicitateCrisisHandling.TheCoordinator= "TheCoordinator"
+						AMessageForCrisisHandlers : testcase01.ts09oeSollicitateCrisisHandling.AMessageForCrisisHandlers= "AMessageForCrisisHandlers"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi10 : testcase01.ts10oeLogin02 {
+				variables {
+					TheActor : testcase01.ts10oeLogin02.TheActor= "TheActor"
+					AdtLogin : testcase01.ts10oeLogin02.AdtLogin= "AdtLogin"
+					AdtPassword : testcase01.ts10oeLogin02.AdtPassword= "AdtPassword"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts10oeLogin02.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi11 : testcase01.ts11oeGetCrisisSet {
+				variables {
+					TheActor : testcase01.ts11oeGetCrisisSet.TheActor= "TheActor"
+					AetCrisisStatus : testcase01.ts11oeGetCrisisSet.AetCrisisStatus= "AetCrisisStatus"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						ActCrisis : testcase01.ts11oeGetCrisisSet.ActCrisis= "ActCrisis"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi12 : testcase01.ts12oeSetCrisisHandler {
+				variables {
+					TheActor : testcase01.ts12oeSetCrisisHandler.TheActor= "TheActor"
+					AdtCrisisID : testcase01.ts12oeSetCrisisHandler.AdtCrisisID= "AdtCrisisID"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts12oeSetCrisisHandler.AMessage= "AMessage"
+						AdtPhoneNumber : testcase01.ts12oeSetCrisisHandler.AdtPhoneNumber= "AdtPhoneNumber"
+						AdtSMS : testcase01.ts12oeSetCrisisHandler.AdtSMS= "AdtSMS"
+						ActAlert : testcase01.ts12oeSetCrisisHandler.ActAlert= "ActAlert"
+						TheComCompany : testcase01.ts12oeSetCrisisHandler.TheComCompany= "TheComCompany"
+						TheCoordinator : testcase01.ts12oeSetCrisisHandler.TheCoordinator= "TheCoordinator"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi13 : testcase01.ts13oeSetClock04 {
+				variables {
+					TheActor : testcase01.ts13oeSetClock04.TheActor= "TheActor"
+					ACurrentClock : testcase01.ts13oeSetClock04.ACurrentClock= "ACurrentClock"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi14 : testcase01.ts14oeValidateAlert {
+				variables {
+					TheActor : testcase01.ts14oeValidateAlert.TheActor= "TheActor"
+					AdtAlertID : testcase01.ts14oeValidateAlert.AdtAlertID= "AdtAlertID"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts14oeValidateAlert.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi15 : testcase01.ts15oeAlert2 {
+				variables {
+					TheActor : testcase01.ts15oeAlert2.TheActor= "TheActor"
+					AetHumanKind : testcase01.ts15oeAlert2.AetHumanKind= "AetHumanKind"
+					AdtDate : testcase01.ts15oeAlert2.AdtDate= "AdtDate"
+					AdtTime : testcase01.ts15oeAlert2.AdtTime= "AdtTime"
+					AdtPhoneNumber : testcase01.ts15oeAlert2.AdtPhoneNumber= "AdtPhoneNumber"
+					AdtGPSLocation : testcase01.ts15oeAlert2.AdtGPSLocation= "AdtGPSLocation"
+					AdtComment : testcase01.ts15oeAlert2.AdtComment= "AdtComment"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AdtSMS : testcase01.ts15oeAlert2.AdtSMS= "AdtSMS"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi16 : testcase01.ts16oeSetClock05 {
+				variables {
+					TheActor : testcase01.ts16oeSetClock05.TheActor= "TheActor"
+					ACurrentClock : testcase01.ts16oeSetClock05.ACurrentClock= "ACurrentClock"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi17 : testcase01.ts17oeSetCrisisStatus {
+				variables {
+					TheActor : testcase01.ts17oeSetCrisisStatus.TheActor= "TheActor"
+					AdtCrisisID : testcase01.ts17oeSetCrisisStatus.AdtCrisisID= "AdtCrisisID"
+					AetCrisisStatus : testcase01.ts17oeSetCrisisStatus.AetCrisisStatus= "AetCrisisStatus"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts17oeSetCrisisStatus.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi18 : testcase01.ts18oeReportOnCrisis {
+				variables {
+					TheActor : testcase01.ts18oeReportOnCrisis.TheActor= "TheActor"
+					AdtCrisisID : testcase01.ts18oeReportOnCrisis.AdtCrisisID= "AdtCrisisID"
+					AdtComment : testcase01.ts18oeReportOnCrisis.AdtComment= "AdtComment"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts18oeReportOnCrisis.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+			test step instance tsi19 : testcase01.ts19oeCloseCrisis {
+				variables {
+					TheActor : testcase01.ts19oeCloseCrisis.TheActor= "TheActor"
+					AdtCrisisID : testcase01.ts19oeCloseCrisis.AdtCrisisID= "AdtCrisisID"
+				}
+				message {
+				}
+				oracle {
+					satisfaction = "true"
+					received message {
+						AMessage : testcase01.ts19oeCloseCrisis.AMessage= "AMessage"
+					}
+				}
+				test results {
+					pre-protocol = "true"
+					pre-functional = "true"
+					post-functional = "true"
+				}
+			}
+
+		}
+	}
+}

@@ -502,23 +502,25 @@ test step ts03oeLogin order 03{
             TheActor : actCoordinator
             AdtCrisisID : dtCrisisID
             AdtComment : dtComment
+            AdtCrisisSendSmsFamily:ptBoolean
           }
         constraints{
             TheActor=TheSystem.rnactCoordinator
             ->select(a | a.rnctCoordinator.login.value.eq('steve'))
             ->any2(true) 
-            //and AdtCrisisID.value= '1'
-            //and AdtComment.value = '3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized'
+            AdtCrisisID.value= '1'
+            AdtComment.value = '3 victims sent to hospital, 2 cars evacuated and 4 rescue unit mobilized'
+            AdtCrisisSendSmsFamily = false
           }
         test message{
-          out:TheActor sends to system actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID,AdtComment)
+          out:TheActor sends to system actCoordinator.outactCoordinator.oeReportOnCrisis(AdtCrisisID,AdtComment,AdtCrisisSendSmsFamily)
         }
         oracle{
           variables{
             AMessage:ptString
           }
           constraints{
-          AMessage = 'The crisis comment has been updated !'
+          AMessage = 'The crisis comment has been updated!'
           TheActor.inactAuthenticated.ieMessage(AMessage)
         }
       }

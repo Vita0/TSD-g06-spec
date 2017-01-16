@@ -1,0 +1,47 @@
+/*
+@author Masha
+@date Sun Jan 15 04:08:17 MSK 2017
+*/
+
+
+@@Instance Test Case ^test.tci.tci
+@description ""
+@Instance Test Step ^test.tci.tci.tsi01
+
+@Instance Test Step ^test.tci.tci.tsi02
+
+@Instance Test Step ^test.tci.tci.tsi03
+
+@Instance Test Step ^test.tci.tci.tsi04
+
+@Instance Test Step ^test.tci.tci.tsi05
+
+@Instance Test Step ^test.tci.tci.tsi06
+
+@Instance Test Step ^test.tci.tci.tsi07
+
+@Instance Test Step ^test.tci.tci.tsi08
+
+@Instance Test Step ^test.tci.tci.tsi09
+
+@Instance Test Step ^test.tci.tci.tsi10
+
+@Instance Test Step ^test.tci.tci.tsi11
+
+@Instance Test Step ^test.tci.tci.tsi12
+
+@Instance Test Step ^test.tci.tci.tsi13
+
+@Instance Test Step ^test.tci.tci.tsi14
+
+@Instance Test Step ^test.tci.tci.tsi15
+
+@Instance Test Step ^test.tci.tci.tsi16
+
+@Instance Test Step ^test.tci.tci.tsi17
+
+@Instance Test Step ^test.tci.tci.tsi18
+
+@Instance Test Step ^test.tci.tci.tsi19
+
+

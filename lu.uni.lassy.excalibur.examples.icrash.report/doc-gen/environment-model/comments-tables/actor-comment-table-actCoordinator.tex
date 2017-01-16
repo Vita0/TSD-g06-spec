@@ -31,8 +31,14 @@
 			{\msrcode{oeSetCrisisHandler(AdtCrisisID:dtCrisisID):ptBoolean}}}
 			{sent to declare himself as been the handler of a crisis having the specified id.}
 	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeReportOnCrisis}
-			{\msrcode{oeReportOnCrisis(AdtCrisisID:dtCrisisID, AdtComment:dtComment, AdtCrisisSendSmsFamily:ptBoolean):ptBoolean}}}
-			{sent to update the textual information available for a specific handled crisis.}
+			{\msrcode{oeReportOnCrisis(AdtCrisisID:dtCrisisID, AdtComment:dtComment, AptCrisisSendSmsFamily:ptBoolean):ptBoolean}}}
+			{sent to update the textual information available for a specific handled crisis and if necessary send it to family members.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeAddFamilyMemberOnCrisis}
+			{\msrcode{oeAddFamilyMemberOnCrisis(AdtCrisisID:dtCrisisID, AdtPhoneNumber:dtPhoneNumber, AptComCompanyId:ptInteger):ptBoolean}}}
+			{sent to add family member with given phone number and selected communication company to a specific handled crisis.}
+	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis}
+			{\msrcode{oeDeleteFamilyMemberOnCrisis(AdtCrisisID:dtCrisisID, AdtPhoneNumber:dtPhoneNumber):ptBoolean}}}
+			{sent to delete family member by phone number for a specific handled crisis.}
 	\addnumbereddoublerow{OUT}{\hypertarget{actCoordinator.outactCoordinator.oeSetCrisisStatus}
 			{\msrcode{oeSetCrisisStatus(AdtCrisisID:dtCrisisID, AetCrisisStatus:etCrisisStatus):ptBoolean}}}
 			{sent to define the handling status of a specific crisis.}

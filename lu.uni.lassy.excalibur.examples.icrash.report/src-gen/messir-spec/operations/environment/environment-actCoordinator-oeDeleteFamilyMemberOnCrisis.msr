@@ -1,0 +1,88 @@
+package icrash.environment.operations.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis {
+
+import lu.uni.lassy.messir.libraries.primitives
+import lu.uni.lassy.messir.libraries.math
+import lu.uni.lassy.messir.libraries.string
+import lu.uni.lassy.messir.libraries.calendar
+import icrash.concepts.primarytypes.datatypes
+import icrash.concepts.primarytypes.classes
+import icrash.concepts.secondarytypes.datatypes
+import icrash.environment
+
+Operation Model {
+
+operation: icrash.environment.actCoordinator.outactCoordinator.oeDeleteFamilyMemberOnCrisis(
+	AdtCrisisID:dtCrisisID,
+	AdtPhoneNumber:dtPhoneNumber
+):ptBoolean{
+preP{
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  self.rnActor = TheActor
+  and self.rnActor.rnSystem = TheSystem
+
+  /* PreP01 */
+  and TheSystem.vpStarted = true
+  /* PreP02 */
+  and TheActor.rnctAuthenticated.vpIsLogged = true
+}
+preF{ 
+  let TheSystem: ctState in
+  let TheActor: actCoordinator in
+  let ColCrisis:Bag(ctCrisis) in
+  let TheCrisisFamily:ctCrisis in
+  let HumanCol1:Bag(ctHuman) in
+
+  self.rnActor.rnSystem = TheSystem
+  and self.rnActor = TheActor
+
+/* PreF01 */
+  and TheSystem.rnctCrisis->select(id.eq(AdtCrisisID)) = ColCrisis
+  and ColCrisis->size().eq(1)
+  /* PreF02 */
+  and TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
+  and TheCrisisFamily.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = HumanCol1
+  and HumanCol1->size().eq(1)
+}
+postF{
+ let  TheSystem: ctState in
+ let  TheActor: actCoordinator in
+ let  TheHumanFamily:ctHuman in
+ let  TheCrisisFamily:ctCrisis in
+ let  AptStringMessageForCrisisHandlers:ptString in
+ let  AetHumanKind:etHumanKind in
+ let  HumanCol2:Bag(ctHuman) in
+ let  HumanCol3:Bag(ctHuman) in
+ 
+ self.rnActor.rnSystem = TheSystem
+ and self.rnActor = TheActor
+ 
+/* PostF01 */
+and TheSystem.rnCrisisFamily->select(id.eq(AdtCrisisID)) = TheCrisisFamily
+and TheCrisisFamily.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = TheHumanFamily
+and TheHumanFamily.rnCrisisFamily->forAll(msrIsKilled)
+and TheHumanFamily.msrIsKilled
+
+/* PostF02 */
+and TheSystem.rnHumanFamily->select(id.eq(AdtPhoneNumber)) = HumanCol2
+and AetHumanKind = familyMember
+and if (HumanCol2->msrIsEmpty)
+    then (
+    	TheSystem.rnctHuman->select(id.eq(AdtPhoneNumber)) = HumanCol2
+    	and HumanCol2->select(kind.eq(AetHumanKind)) = HumanCol3
+    	and HumanCol3.rnactComCompany->forAll(msrIsKilled)
+    	and HumanCol3->forAll(msrIsKilled)
+    )
+    else ()
+    endif
+
+/* PostF03 */
+and AptStringMessageForCrisisHandlers.eq('The crisis family member has been deleted!')
+and TheActor.rnInterfaceIN^ieMessage(AptStringMessageForCrisisHandlers)
+}
+ /* Post Protocol:*/
+/* PostP01 */
+postP{true}
+		}
+	}
+}

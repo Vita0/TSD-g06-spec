@@ -1,0 +1,45 @@
+\subsubsection{subfunction-oeDeleteFamilyMemberOnCrisis}
+
+\label{RE-use-case-oeDeleteFamilyMemberOnCrisis}
+
+
+The actCoordinators's goal is to delete the family member on specific handled crisis.		  
+
+
+\begin{usecase}
+  \addheading{Use-Case Description}
+  \addsingletwocolumnrow{Name}{oeDeleteFamilyMemberOnCrisis}
+  \addsingletwocolumnrow{Scope}{system}
+  \addsingletwocolumnrow{Level}{subfunction}
+  
+\addrowheading{Parameters}
+\addnumberedsinglerow{AdtCrisisID: dtCrisisID}{}
+\addnumberedsinglerow{AdtPhoneNumber: dtPhoneNumber}{}
+
+\addrowheading{Primary actor(s)}
+\addnumberedsinglerow{}{\msrcode{actCoordinator[active]}}
+
+
+
+\addrowheading{Goal(s) description}
+\addsinglerow{The actCoordinators's goal is to delete the family member on specific handled crisis.}
+
+\addrowheading{Protocol condition(s)}
+\addnumberedsinglerow{}{the iCrash system has been deployed.}
+\addnumberedsinglerow{}{the coordinator logged previously and did not log out}
+
+\addrowheading{Pre-condition(s)}
+\addnumberedsinglerow{}{
+}
+
+\addrowheading{Main post-condition(s)}
+\addnumberedsinglerow{}{a family member is deleted from the system,
+a simple text message ieMessage('The crisis family member has been deleted!') is sent to coordinator.}
+
+\addrowheading{Additional Information}
+\addsinglerow{
+none
+}
+
+\end{usecase} 
+

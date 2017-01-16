@@ -110,7 +110,16 @@ import icrash.environment
     }
   }
 //----------------------------------------------------
-  use case system subfunction oeAddFamilyNumbersOnCrisis(AdtCrisisID:dtCrisisID,AdtFamilyPhoneNumbers:dtFamilyPhoneNumbers) {
+  use case system subfunction oeAddFamilyMemberOnCrisis(AdtCrisisID:dtCrisisID
+,AdtPhoneNumber:dtPhoneNumber,AptComCompanyId:ptInteger) {
+  	actor actCoordinator[primary,active]
+    returned messages {
+      ieMessage(AMessage) returned to actCoordinator
+    }
+  }
+//----------------------------------------------------
+  use case system subfunction oeDeleteFamilyMemberOnCrisis(AdtCrisisID:dtCrisisID
+,AdtPhoneNumber:dtPhoneNumber) {
   	actor actCoordinator[primary,active]
     returned messages {
       ieMessage(AMessage) returned to actCoordinator

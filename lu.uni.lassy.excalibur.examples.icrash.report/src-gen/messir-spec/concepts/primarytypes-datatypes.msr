@@ -27,9 +27,6 @@ import lu.uni.lassy.messir.libraries.calendar
 			datatype dtPhoneNumber extends dtString {
 				operation is():ptBoolean
 			}
-			datatype dtFamilyPhoneNumbers {
-				operation is():ptBoolean
-			}
 			datatype dtComment extends dtString {
 				operation is():ptBoolean			
 			}

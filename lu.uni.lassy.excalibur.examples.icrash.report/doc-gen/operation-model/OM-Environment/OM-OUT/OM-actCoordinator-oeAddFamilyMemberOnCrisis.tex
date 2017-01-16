@@ -1,0 +1,48 @@
+\subsection{Operation Model for oeAddFamilyMemberOnCrisis}
+
+\label{OM-oeAddFamilyMemberOnCrisis}
+
+
+The \msrcode{oeAddFamilyMemberOnCrisis} operation has the following properties:
+
+	\begin{operationmodel}
+	\addheading{Operation}
+	\adddoublerow{oeAddFamilyMemberOnCrisis}{sent to associate the family member to a specific handled crisis.}
+
+	\addrowheading{Parameters}
+	\addnumbereddoublerow{}{AdtCrisisID: dtCrisisID}{the identification information used to determine the crisis to associate family member on} 
+	\addnumbereddoublerow{}{AdtPhoneNumber: dtPhoneNumber}{the family member phone number} 
+	\addnumbereddoublerow{}{AptComCompanyId: ptInteger}{the identification information used to determine the family number communication company} 
+
+	\addrowheading{Return type}
+	\addsinglerow{ptBoolean}
+
+	\addrowheading{Pre-Condition (protocol)}
+	\addnumberedsinglerow{PreP}{the system is started}
+	\addnumberedsinglerow{PreP}{the actor logged previously and did not log out ! (i.e. the associated ctCoordinator instance is considered logged)}
+		
+	\addrowheading{Pre-Condition (functional)}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one crisis in the pre state having the given id.}
+	\addnumberedsinglerow{PreF}{it is supposed that there not exist family member with given phone number associated with given crisis in the pre state.}
+	\addnumberedsinglerow{PreF}{it is supposed that there exist one ctComCompany in the pre state having the given communication company id.}
+
+	\addrowheading{Post-Condition (functional)}
+	\addnumberedsinglerow{PostF}{if there is no ctHuman instance having same phone number in the pre-state 
+	then a new one is added in the post-state with given phone number and familyMember kind; if there exist ctComCompany with given id, created ctHuman is associated to selected actComCompany, else it associated to any communication company. The crisis having the given id is associated to family member.}
+	\addnumberedsinglerow{PostF}{the requesting actor is notified of adding family member.}
+
+	\addrowheading{Post-Condition (protocol)}
+	\addnumberedsinglerow{PostP}{none}
+	\end{operationmodel}
+
+
+
+	
+	
+	
+	
+
+
+
+
+
